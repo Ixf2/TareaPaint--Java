@@ -17,6 +17,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        
+        Lienzo lienzo = new Lienzo();
+        lienzo.setBounds(0,50,800,500);
+        
+        setSize(800, 600);
+        setLayout(null);
+        setVisible(true);
+        
+        
     }
 
     /**
@@ -28,21 +37,131 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Pinceles = new javax.swing.ButtonGroup();
+        jpLienzo = new javax.swing.JPanel();
+        jLabelPincel = new javax.swing.JLabel();
+        rbPunto = new javax.swing.JRadioButton();
+        rbRecta = new javax.swing.JRadioButton();
+        rbCirculo = new javax.swing.JRadioButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        mbMenu = new javax.swing.JMenu();
+        jcbMenuNuevo = new javax.swing.JCheckBoxMenuItem();
+        jcbMenuCargar = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        mbArchivo = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jpLienzo.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jpLienzoLayout = new javax.swing.GroupLayout(jpLienzo);
+        jpLienzo.setLayout(jpLienzoLayout);
+        jpLienzoLayout.setHorizontalGroup(
+            jpLienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 544, Short.MAX_VALUE)
+        );
+        jpLienzoLayout.setVerticalGroup(
+            jpLienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jLabelPincel.setText("Elije pincel");
+
+        rbPunto.setText("Punto");
+
+        rbRecta.setText("Recta");
+        rbRecta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbRectaActionPerformed(evt);
+            }
+        });
+
+        rbCirculo.setText("Círculo");
+        rbCirculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbCirculoActionPerformed(evt);
+            }
+        });
+
+        mbMenu.setText("Menú");
+
+        jcbMenuNuevo.setSelected(true);
+        jcbMenuNuevo.setText("Nuevo");
+        mbMenu.add(jcbMenuNuevo);
+
+        jcbMenuCargar.setSelected(true);
+        jcbMenuCargar.setText("Cargar");
+        jcbMenuCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMenuCargarActionPerformed(evt);
+            }
+        });
+        mbMenu.add(jcbMenuCargar);
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("SVG");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        mbMenu.add(jCheckBoxMenuItem1);
+
+        jMenuBar1.add(mbMenu);
+
+        mbArchivo.setText("Archivo");
+        jMenuBar1.add(mbArchivo);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbPunto)
+                    .addComponent(jLabelPincel)
+                    .addComponent(rbRecta)
+                    .addComponent(rbCirculo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(jpLienzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 455, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabelPincel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(rbPunto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbRecta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbCirculo)
+                .addGap(387, 387, 387))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jpLienzo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rbRectaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbRectaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbRectaActionPerformed
+
+    private void rbCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCirculoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbCirculoActionPerformed
+
+    private void jcbMenuCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuCargarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbMenuCargarActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +189,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup Pinceles;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabelPincel;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JCheckBoxMenuItem jcbMenuCargar;
+    private javax.swing.JCheckBoxMenuItem jcbMenuNuevo;
+    private javax.swing.JPanel jpLienzo;
+    private javax.swing.JMenu mbArchivo;
+    private javax.swing.JMenu mbMenu;
+    private javax.swing.JRadioButton rbCirculo;
+    private javax.swing.JRadioButton rbPunto;
+    private javax.swing.JRadioButton rbRecta;
     // End of variables declaration//GEN-END:variables
 }
