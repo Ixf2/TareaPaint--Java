@@ -19,10 +19,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         
         Lienzo lienzo = new Lienzo();
-        lienzo.setBounds(0,50,800,500);
+        lienzo.setBounds(0,100,800,500);
+        add(lienzo);
         
         setSize(800, 600);
         setLayout(null);
+        setLocationRelativeTo(null);
         setVisible(true);
         
         
@@ -38,7 +40,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         Pinceles = new javax.swing.ButtonGroup();
-        jpLienzo = new javax.swing.JPanel();
         jLabelPincel = new javax.swing.JLabel();
         rbPunto = new javax.swing.JRadioButton();
         rbRecta = new javax.swing.JRadioButton();
@@ -51,19 +52,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mbArchivo = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jpLienzo.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jpLienzoLayout = new javax.swing.GroupLayout(jpLienzo);
-        jpLienzo.setLayout(jpLienzoLayout);
-        jpLienzoLayout.setHorizontalGroup(
-            jpLienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 544, Short.MAX_VALUE)
-        );
-        jpLienzoLayout.setVerticalGroup(
-            jpLienzoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
 
         jLabelPincel.setText("Elije pincel");
 
@@ -125,8 +113,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabelPincel)
                     .addComponent(rbRecta)
                     .addComponent(rbCirculo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jpLienzo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(582, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,9 +126,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbCirculo)
                 .addGap(387, 387, 387))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jpLienzo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
 
         pack();
@@ -195,7 +179,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JCheckBoxMenuItem jcbMenuCargar;
     private javax.swing.JCheckBoxMenuItem jcbMenuNuevo;
-    private javax.swing.JPanel jpLienzo;
     private javax.swing.JMenu mbArchivo;
     private javax.swing.JMenu mbMenu;
     private javax.swing.JRadioButton rbCirculo;

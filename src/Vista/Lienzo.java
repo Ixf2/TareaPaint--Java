@@ -5,14 +5,22 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
+
 public class Lienzo extends JPanel {
 
-    private int x;
-    private int y;
-
+    private ArrayList<int[]> puntos;
+    private String herramienta = "Punto";
+    
+    
     public Lienzo() {
+        //Ponemos el fondo blanco totalmente.
         setBackground(java.awt.Color.WHITE);
+        
+        
 
+        
+
+        //Detecta el ratón con método de JPanel
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -32,4 +40,13 @@ public class Lienzo extends JPanel {
 
         g.fillOval(x, y, 5, 5);
     }
+    
+    
+    //Método Setter de Punto
+    public void setHerramienta(String herramienta) {
+            this.herramienta = herramienta;
+        }
+    
+    
+    
 }
