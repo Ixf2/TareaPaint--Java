@@ -1,66 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Vista;
-import java.awt.Color;
-import javax.swing.JPanel;
+
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.text.StyleConstants;
+import javax.swing.JPanel;
 
+public class Lienzo extends JPanel {
 
-public class Lienzo extend JPanel{
-    
-    private int x, y;
-    
-    public Lienzo (){
+    private int x;
+    private int y;
+
+    public Lienzo() {
         setBackground(java.awt.Color.WHITE);
+
         addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e){
+            public void mouseClicked(MouseEvent e) {
+                //Guardamos la posición y mandamos a repintar el panel
                 x = e.getX();
                 y = e.getY();
                 repaint();
             }
-
-            private void repaint() {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
         });
-        
-        @Override
-        protected void paintComponent (Graphics g) {
+    }
+
+    
+    //Método para guardar la información cuando se repintea anteriormente.
+    @Override
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        
-        //Para dibujar un punto
-        g.fillOval(x,y,5,5);
-        
-    }
-        
-        
-        
-        
-    }
 
-    private void setBackground(Color WHITE) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        g.fillOval(x, y, 5, 5);
     }
-
-    private void addMouseListener(MouseAdapter mouseAdapter) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    void setBounds(int i, int i0, int i1, int i2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    
-    
-    
-    
-    
-    
-    
 }

@@ -8,5 +8,7 @@
  * @author Joana
  */
 public class Main {
-    new Vista.VentanaPrincipal();
+    public static void main(String[] args) {
+        new Vista.VentanaPrincipal();
+    }
 }
