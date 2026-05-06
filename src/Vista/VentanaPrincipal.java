@@ -4,12 +4,13 @@
  */
 package Vista;
 
+
 /**
  *
  * @author Joana
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    
+    private Lienzo lienzo;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
 
     /**
@@ -18,7 +19,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
         
-        Lienzo lienzo = new Lienzo();
+        lienzo = new Lienzo();
         lienzo.setBounds(0,100,800,500);
         add(lienzo);
         
@@ -26,7 +27,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLayout(null);
         setLocationRelativeTo(null);
         setVisible(true);
-        
         
     }
 
@@ -56,6 +56,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelPincel.setText("Elije pincel");
 
         rbPunto.setText("Punto");
+        rbPunto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPuntoActionPerformed(evt);
+            }
+        });
 
         rbRecta.setText("Recta");
         rbRecta.addActionListener(new java.awt.event.ActionListener() {
@@ -132,11 +137,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbRectaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbRectaActionPerformed
-        // TODO add your handling code here:
+       lienzo.setHerramienta("Recta");
+        
+        
+        
+        
+        
     }//GEN-LAST:event_rbRectaActionPerformed
 
     private void rbCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCirculoActionPerformed
-        // TODO add your handling code here:
+        lienzo.setHerramienta("Circulo");
+
+
+
+
     }//GEN-LAST:event_rbCirculoActionPerformed
 
     private void jcbMenuCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuCargarActionPerformed
@@ -146,6 +160,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void rbPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPuntoActionPerformed
+        lienzo.setHerramienta("Punto");
+
+
+
+
+    }//GEN-LAST:event_rbPuntoActionPerformed
 
     /**
      * @param args the command line arguments
