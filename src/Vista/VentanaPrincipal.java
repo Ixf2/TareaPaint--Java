@@ -20,7 +20,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         
         lienzo = new Lienzo();
-        lienzo.setBounds(0,100,800,500);
+        lienzo.setBounds(0,100,800,495);
         add(lienzo);
         
         setSize(800, 600);
@@ -44,6 +44,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         rbPunto = new javax.swing.JRadioButton();
         rbRecta = new javax.swing.JRadioButton();
         rbCirculo = new javax.swing.JRadioButton();
+        rbPoligonoRegular = new javax.swing.JRadioButton();
+        rbPoligonoIrregular = new javax.swing.JRadioButton();
+        sBarraPoligono = new javax.swing.JSlider();
+        jLabel1 = new javax.swing.JLabel();
+        cbRelleno = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         mbMenu = new javax.swing.JMenu();
         jcbMenuNuevo = new javax.swing.JCheckBoxMenuItem();
@@ -55,6 +60,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabelPincel.setText("Elije pincel");
 
+        Pinceles.add(rbPunto);
         rbPunto.setText("Punto");
         rbPunto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,6 +68,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        Pinceles.add(rbRecta);
         rbRecta.setText("Recta");
         rbRecta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,12 +76,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        Pinceles.add(rbCirculo);
         rbCirculo.setText("Círculo");
         rbCirculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbCirculoActionPerformed(evt);
             }
         });
+
+        Pinceles.add(rbPoligonoRegular);
+        rbPoligonoRegular.setText("Polígono Regular");
+        rbPoligonoRegular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPoligonoRegularActionPerformed(evt);
+            }
+        });
+
+        Pinceles.add(rbPoligonoIrregular);
+        rbPoligonoIrregular.setText("Polígono Irregular");
+
+        jLabel1.setText("Lados polígono:");
+
+        cbRelleno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Con Relleno", "Sin Relleno" }));
 
         mbMenu.setText("Menú");
 
@@ -114,22 +137,55 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbPunto)
-                    .addComponent(jLabelPincel)
-                    .addComponent(rbRecta)
-                    .addComponent(rbCirculo))
-                .addContainerGap(582, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbPunto)
+                            .addComponent(rbRecta))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rbPoligonoIrregular)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(rbPoligonoRegular)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(sBarraPoligono, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rbCirculo)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbRelleno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelPincel))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabelPincel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(rbPunto)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelPincel)
+                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rbPunto)
+                            .addComponent(rbPoligonoRegular))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sBarraPoligono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbRecta)
+                    .addComponent(rbPoligonoIrregular))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbRecta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbCirculo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbCirculo)
+                    .addComponent(cbRelleno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(387, 387, 387))
         );
 
@@ -169,6 +225,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_rbPuntoActionPerformed
 
+    private void rbPoligonoRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPoligonoRegularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbPoligonoRegularActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -196,7 +256,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Pinceles;
+    private javax.swing.JComboBox<String> cbRelleno;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelPincel;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JCheckBoxMenuItem jcbMenuCargar;
@@ -204,7 +266,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mbArchivo;
     private javax.swing.JMenu mbMenu;
     private javax.swing.JRadioButton rbCirculo;
+    private javax.swing.JRadioButton rbPoligonoIrregular;
+    private javax.swing.JRadioButton rbPoligonoRegular;
     private javax.swing.JRadioButton rbPunto;
     private javax.swing.JRadioButton rbRecta;
+    private javax.swing.JSlider sBarraPoligono;
     // End of variables declaration//GEN-END:variables
 }
