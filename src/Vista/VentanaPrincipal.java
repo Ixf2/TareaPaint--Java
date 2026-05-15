@@ -7,30 +7,37 @@ package Vista;
 import java.awt.Color;
 import javax.swing.JColorChooser;
 
-
 /**
  *
  * @author Joana
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
+
     private Lienzo lienzo;
     private Color colorActual = Color.BLACK;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
-            /**
+
+    /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
-        
+
         lienzo = new Lienzo();
-        lienzo.setBounds(0,100,800,495);
+        lienzo.setBounds(0, 100, 800, 495);
         add(lienzo);
-        
+
+        lienzo.setLadosPoligono(sLadoPoligono.getValue());
+
+        boolean conRelleno = cbRelleno.getSelectedItem().toString().equals("Con Relleno");
+        lienzo.setRellenoCirculo(conRelleno);
+        lienzo.setRellenoPoligono(conRelleno);
+
         setSize(800, 600);
         setLayout(null);
         setLocationRelativeTo(null);
         setVisible(true);
-        
+
     }
 
     /**
@@ -49,7 +56,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         rbCirculo = new javax.swing.JRadioButton();
         rbPoligonoRegular = new javax.swing.JRadioButton();
         rbPoligonoIrregular = new javax.swing.JRadioButton();
-        sBarraPoligono = new javax.swing.JSlider();
+        sLadoPoligono = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
         cbRelleno = new javax.swing.JComboBox<>();
         rbLapiz = new javax.swing.JRadioButton();
@@ -99,6 +106,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         Pinceles.add(rbPoligonoIrregular);
         rbPoligonoIrregular.setText("Polígono Irregular");
+
+        sLadoPoligono.setMajorTickSpacing(1);
+        sLadoPoligono.setMaximum(12);
+        sLadoPoligono.setMinimum(3);
+        sLadoPoligono.setPaintTicks(true);
+        sLadoPoligono.setSnapToTicks(true);
+        sLadoPoligono.setValue(5);
+        sLadoPoligono.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sLadoPoligonoStateChanged(evt);
+            }
+        });
 
         jLabel1.setText("Lados polígono:");
 
@@ -183,7 +202,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel1)
-                                            .addComponent(sBarraPoligono, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                            .addComponent(sLadoPoligono, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -210,7 +229,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sBarraPoligono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(sLadoPoligono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbRecta)
@@ -227,16 +246,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbRectaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbRectaActionPerformed
-    lienzo.usarRecta();
-        
-        
-        
-        
+        lienzo.usarRecta();
+
+
     }//GEN-LAST:event_rbRectaActionPerformed
 
     private void rbCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCirculoActionPerformed
-    lienzo.usarCirculo();
-
+        lienzo.usarCirculo();
 
 
     }//GEN-LAST:event_rbCirculoActionPerformed
@@ -250,39 +266,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     private void rbPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPuntoActionPerformed
-    lienzo.usarPunto();
-
+        lienzo.usarPunto();
 
 
     }//GEN-LAST:event_rbPuntoActionPerformed
 
+
     private void rbPoligonoRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPoligonoRegularActionPerformed
-        // TODO add your handling code here:
+        lienzo.usarPoligonoRegular();
+
+        lienzo.setLadosPoligono(
+                sLadoPoligono.getValue()
+        );
+
     }//GEN-LAST:event_rbPoligonoRegularActionPerformed
 
     private void rbLapizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLapizActionPerformed
-    lienzo.usarLapiz();
+        lienzo.usarLapiz();
     }//GEN-LAST:event_rbLapizActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Color color = JColorChooser.showDialog(this, "Selecciona un color", colorActual);
-        
-        if (color != null){
+
+        if (color != null) {
             colorActual = color;
             lienzo.setColorActual(colorActual);
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbRellenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRellenoActionPerformed
-        
+
         if (lienzo != null) {
-        boolean conRelleno = cbRelleno.getSelectedItem().toString().equals("Con Relleno");
-        lienzo.setRellenoCirculo(conRelleno);
-    }
+            boolean conRelleno = cbRelleno.getSelectedItem().toString().equals("Con Relleno");
+
+            lienzo.setRellenoCirculo(conRelleno);
+            lienzo.setRellenoPoligono(conRelleno);
+        }
 
 
     }//GEN-LAST:event_cbRellenoActionPerformed
+
+    private void sLadoPoligonoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sLadoPoligonoStateChanged
+        if (lienzo != null) {
+            lienzo.setLadosPoligono(sLadoPoligono.getValue());
+        }
+    }//GEN-LAST:event_sLadoPoligonoStateChanged
 
     /**
      * @param args the command line arguments
@@ -327,6 +356,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbPoligonoRegular;
     private javax.swing.JRadioButton rbPunto;
     private javax.swing.JRadioButton rbRecta;
-    private javax.swing.JSlider sBarraPoligono;
+    private javax.swing.JSlider sLadoPoligono;
     // End of variables declaration//GEN-END:variables
 }
