@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import java.awt.Color;
+import javax.swing.JColorChooser;
+
 
 /**
  *
@@ -11,6 +14,7 @@ package Vista;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     private Lienzo lienzo;
+    private Color colorActual = Color.BLACK;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
 
     /**
@@ -50,6 +54,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cbRelleno = new javax.swing.JComboBox<>();
         rbLapiz = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mbMenu = new javax.swing.JMenu();
         jcbMenuNuevo = new javax.swing.JCheckBoxMenuItem();
@@ -108,6 +113,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Elige Color");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         mbMenu.setText("Menú");
 
         jcbMenuNuevo.setSelected(true);
@@ -155,14 +167,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rbPoligonoIrregular)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(rbPoligonoRegular)
                                 .addGap(18, 18, 18)
-                                .addComponent(rbLapiz)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(sBarraPoligono, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(rbLapiz)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(sBarraPoligono, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -197,8 +214,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbCirculo)
-                    .addComponent(cbRelleno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(387, 387, 387))
+                    .addComponent(cbRelleno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(386, 386, 386))
         );
 
         pack();
@@ -242,6 +260,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     lienzo.usarLapiz();
     }//GEN-LAST:event_rbLapizActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Color color = JColorChooser.showDialog(this, "Selecciona un color", colorActual);
+        
+        if (color != null){
+            colorActual = color;
+            lienzo.setColorActual(colorActual);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -270,6 +298,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Pinceles;
     private javax.swing.JComboBox<String> cbRelleno;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelPincel;

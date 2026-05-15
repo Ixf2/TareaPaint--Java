@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -59,4 +60,13 @@ public class Lienzo extends JPanel {
     public void usarCirculo() {
         herramienta = circulos;
     }
+    
+    public void setColorActual(Color color){
+        lapiz.setColor(color);
+        punto.setColor(color);
+        recta.setColor(color);
+        circulos.setColor(color);
+    }
+    
+    
 }

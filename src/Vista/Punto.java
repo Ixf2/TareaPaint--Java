@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 public class Punto implements Herramienta {
 
     private ArrayList<int[]> puntos;
+    private Color color;
+
 
     public Punto() {
         this.puntos = new ArrayList<>();
@@ -29,6 +32,7 @@ public class Punto implements Herramienta {
 
     @Override
     public void dibujar(Graphics g) {
+        g.setColor(color);
         for (int[] p : puntos) {
             g.fillOval(p[0], p[1], 5, 5);
 
@@ -40,5 +44,12 @@ public class Punto implements Herramienta {
     public void mouseDragged(MouseEvent e) {
 
     }
+    
+    @Override
+    public void setColor(Color color){
+        this.color = color;
+    }
+    
+    
 
 }

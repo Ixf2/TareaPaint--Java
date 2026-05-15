@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Recta implements Herramienta {
             = true;
 
     private int x1, y1;
+    private Color color;
 
     @Override
     public void mousePressed(
@@ -49,11 +51,17 @@ public class Recta implements Herramienta {
     @Override
     public void dibujar(
             Graphics g) {
+        g.setColor(color);
         for (int[] r
                 : rectas) {
             g.drawLine(r[0], r[1], r[2], r[3]);
         }
 
+    }
+    
+    @Override
+    public void setColor(Color color){
+        this.color = color;
     }
 
 }
