@@ -84,7 +84,9 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="rbPoligonoRegular" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="230" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="rbLapiz" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="162" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <Component id="sBarraPoligono" min="-2" pref="219" max="-2" attributes="0"/>
@@ -111,16 +113,17 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelPincel" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelPincel" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="rbPunto" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="rbPoligonoRegular" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rbLapiz" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -221,6 +224,17 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbLapiz">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="Pinceles"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Lap&#xed;z"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbLapizActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

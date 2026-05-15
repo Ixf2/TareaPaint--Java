@@ -49,6 +49,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sBarraPoligono = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
         cbRelleno = new javax.swing.JComboBox<>();
+        rbLapiz = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mbMenu = new javax.swing.JMenu();
         jcbMenuNuevo = new javax.swing.JCheckBoxMenuItem();
@@ -99,6 +100,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         cbRelleno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Con Relleno", "Sin Relleno" }));
 
+        Pinceles.add(rbLapiz);
+        rbLapiz.setText("Lapíz");
+        rbLapiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbLapizActionPerformed(evt);
+            }
+        });
+
         mbMenu.setText("Menú");
 
         jcbMenuNuevo.setSelected(true);
@@ -148,7 +157,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(rbPoligonoRegular)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbLapiz)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(sBarraPoligono, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -165,15 +176,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPincel)
-                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelPincel))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rbPunto)
-                            .addComponent(rbPoligonoRegular))
+                            .addComponent(rbPoligonoRegular)
+                            .addComponent(rbLapiz))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -193,8 +205,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbRectaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbRectaActionPerformed
-       lienzo.setHerramienta("Recta");
-        
+    lienzo.usarRecta();
         
         
         
@@ -202,8 +213,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_rbRectaActionPerformed
 
     private void rbCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbCirculoActionPerformed
-        lienzo.setHerramienta("Circulo");
-
+    lienzo.usarCirculo();
 
 
 
@@ -218,8 +228,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
 
     private void rbPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPuntoActionPerformed
-        lienzo.setHerramienta("Punto");
-
+    lienzo.usarPunto();
 
 
 
@@ -228,6 +237,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void rbPoligonoRegularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPoligonoRegularActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbPoligonoRegularActionPerformed
+
+    private void rbLapizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLapizActionPerformed
+    lienzo.usarLapiz();
+    }//GEN-LAST:event_rbLapizActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,6 +279,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu mbArchivo;
     private javax.swing.JMenu mbMenu;
     private javax.swing.JRadioButton rbCirculo;
+    private javax.swing.JRadioButton rbLapiz;
     private javax.swing.JRadioButton rbPoligonoIrregular;
     private javax.swing.JRadioButton rbPoligonoRegular;
     private javax.swing.JRadioButton rbPunto;
