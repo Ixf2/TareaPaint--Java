@@ -16,8 +16,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private Lienzo lienzo;
     private Color colorActual = Color.BLACK;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
-
-    /**
+            /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
@@ -103,7 +102,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setText("Lados polígono:");
 
-        cbRelleno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Con Relleno", "Sin Relleno" }));
+        cbRelleno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sin Relleno", "Con Relleno" }));
+        cbRelleno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbRellenoActionPerformed(evt);
+            }
+        });
 
         Pinceles.add(rbLapiz);
         rbLapiz.setText("Lapíz");
@@ -269,6 +273,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cbRellenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRellenoActionPerformed
+        
+        if (lienzo != null) {
+        boolean conRelleno = cbRelleno.getSelectedItem().toString().equals("Con Relleno");
+        lienzo.setRellenoCirculo(conRelleno);
+    }
+
+
+    }//GEN-LAST:event_cbRellenoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -8,15 +8,23 @@ import javax.swing.JPanel;
 
 public class Lienzo extends JPanel {
 
-    private Herramienta lapiz = new Lapiz();
-    private Herramienta punto = new Punto();
-    private Herramienta recta = new Recta();
-    private Herramienta circulos = new Circulo();
+    private Lapiz lapiz;
+    private Punto punto;
+    private Recta recta;
+    private Circulo circulo;
 
-    private Herramienta herramienta = lapiz;
+    private Herramienta herramienta;
 
     public Lienzo() {
-        setBackground(java.awt.Color.WHITE);
+
+        setBackground(Color.WHITE);
+
+        lapiz = new Lapiz();
+        punto = new Punto();
+        recta = new Recta();
+        circulo = new Circulo();
+
+        herramienta = lapiz;
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -42,7 +50,7 @@ public class Lienzo extends JPanel {
         lapiz.dibujar(g);
         punto.dibujar(g);
         recta.dibujar(g);
-        circulos.dibujar(g);
+        circulo.dibujar(g);
     }
 
     public void usarLapiz() {
@@ -58,15 +66,18 @@ public class Lienzo extends JPanel {
     }
 
     public void usarCirculo() {
-        herramienta = circulos;
+        herramienta = circulo;
     }
-    
-    public void setColorActual(Color color){
+
+    public void setColorActual(Color color) {
         lapiz.setColor(color);
         punto.setColor(color);
         recta.setColor(color);
-        circulos.setColor(color);
+        circulo.setColor(color);
+        circulo.setColorRelleno(color);
     }
-    
-    
+
+    public void setRellenoCirculo(boolean relleno) {
+        circulo.setRelleno(relleno);
+    }
 }

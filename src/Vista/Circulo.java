@@ -7,9 +7,11 @@ import java.util.ArrayList;
 
 public class Circulo implements Herramienta {
 
-    private ArrayList<int[]> circulos;
+    private ArrayList<DatosCirculo> circulos;
+
     private boolean primerClick;
     private int xCentro, yCentro;
+
     private Color colorBorde;
     private Color colorRelleno;
 
@@ -25,21 +27,28 @@ public class Circulo implements Herramienta {
 
     @Override
     public void mousePressed(MouseEvent e) {
+
         if (primerClick) {
+
             xCentro = e.getX();
             yCentro = e.getY();
             primerClick = false;
+
         } else {
+
             int radio = (int) Math.sqrt(
                     Math.pow(e.getX() - xCentro, 2)
                     + Math.pow(e.getY() - yCentro, 2)
             );
 
-            circulos.add(new int[]{
-                xCentro,
-                yCentro,
-                radio
-            });
+            circulos.add(new DatosCirculo(
+                    xCentro,
+                    yCentro,
+                    radio,
+                    colorBorde,
+                    colorRelleno,
+                    relleno
+            ));
 
             primerClick = true;
         }
@@ -51,22 +60,20 @@ public class Circulo implements Herramienta {
 
     @Override
     public void dibujar(Graphics g) {
-        for (int[] c : circulos) {
 
-            int x = c[0] - c[2];
-            int y = c[1] - c[2];
-            int diametro = c[2] * 2;
+        for (DatosCirculo c : circulos) {
 
-            if (relleno) {
-                g.setColor(colorRelleno);
+            int x = c.xCentro - c.radio;
+            int y = c.yCentro - c.radio;
+            int diametro = c.radio * 2;
 
+            if (c.relleno) {
+                g.setColor(c.colorRelleno);
                 g.fillOval(x, y, diametro, diametro);
             }
 
-            
-            g.setColor(colorBorde);
+            g.setColor(c.colorBorde);
             g.drawOval(x, y, diametro, diametro);
-
         }
     }
 
@@ -77,12 +84,30 @@ public class Circulo implements Herramienta {
 
     public void setColorRelleno(Color color) {
         this.colorRelleno = color;
-
     }
 
     public void setRelleno(boolean relleno) {
         this.relleno = relleno;
-
     }
 
+    private class DatosCirculo {
+
+        int xCentro;
+        int yCentro;
+        int radio;
+
+        Color colorBorde;
+        Color colorRelleno;
+
+        boolean relleno;
+
+        public DatosCirculo(int xCentro, int yCentro, int radio, Color colorBorde, Color colorRelleno, boolean relleno) {
+            this.xCentro = xCentro;
+            this.yCentro = yCentro;
+            this.radio = radio;
+            this.colorBorde = colorBorde;
+            this.colorRelleno = colorRelleno;
+            this.relleno = relleno;
+        }
+    }
 }
