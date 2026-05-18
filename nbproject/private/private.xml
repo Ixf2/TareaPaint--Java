@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Joana/Documents/NetBeansProjects/JavaApplication87/src/Main.java</file>
-            <file>file:/C:/Users/Joana/Documents/NetBeansProjects/JavaApplication87/src/Vista/VentanaPrincipal.java</file>
-            <file>file:/C:/Users/Joana/Documents/NetBeansProjects/JavaApplication87/src/Vista/Lienzo.java</file>
+            <file>file:/C:/Users/IXF2/Documents/NetBeansProjects/TareaPaint--Java/src/Main.java</file>
+            <file>file:/C:/Users/IXF2/Documents/NetBeansProjects/TareaPaint--Java/src/Vista/Lienzo.java</file>
+            <file>file:/C:/Users/IXF2/Documents/NetBeansProjects/TareaPaint--Java/src/Vista/VentanaPrincipal.java</file>
+            <file>file:/C:/Users/IXF2/Documents/NetBeansProjects/TareaPaint--Java/src/Vista/Herramienta.java</file>
+            <file>file:/C:/Users/IXF2/Documents/NetBeansProjects/TareaPaint--Java/src/Vista/Lapiz.java</file>
+            <file>file:/C:/Users/IXF2/Documents/NetBeansProjects/TareaPaint--Java/src/Vista/Recta.java</file>
+            <file>file:/C:/Users/IXF2/Documents/NetBeansProjects/TareaPaint--Java/src/Vista/Punto.java</file>
+            <file>file:/C:/Users/IXF2/Documents/NetBeansProjects/TareaPaint--Java/src/Vista/Circulo.java</file>
+            <file>file:/C:/Users/IXF2/Documents/NetBeansProjects/TareaPaint--Java/src/Vista/PoligonoRegular.java</file>
         </group>
     </open-files>
 </project-private>

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Vista;
 
 import java.awt.Color;
@@ -9,47 +5,63 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-/**
- *
- * @author IXF2
- */
 public class Punto implements Herramienta {
 
-    private ArrayList<int[]> puntos;
-    private Color color;
+    private ArrayList<DatosPunto> puntos;
+    private Color color = Color.BLACK;
 
-
-    public Punto() {
-        this.puntos = new ArrayList<>();
-    }
+    public Punto() {puntos = new ArrayList<>();}
 
     @Override
     public void mousePressed(MouseEvent e) {
-        puntos.add(new int[]{
-            e.getX(), e.getY()
-        });
+
+        puntos.add(new DatosPunto(
+                e.getX(),
+                e.getY(),
+                color
+        ));
+
     }
 
     @Override
     public void dibujar(Graphics g) {
-        g.setColor(color);
-        for (int[] p : puntos) {
-            g.fillOval(p[0], p[1], 5, 5);
 
+        for (DatosPunto p : puntos) {
+
+            g.setColor(p.color);
+
+            g.fillOval(
+                    p.x,
+                    p.y,
+                    5,
+                    5
+            );
         }
 
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-
     }
-    
+
     @Override
-    public void setColor(Color color){
+    public void setColor(Color color) {
         this.color = color;
     }
-    
-    
+
+
+    private class DatosPunto {
+
+        int x;
+        int y;
+        Color color;
+
+        public DatosPunto(int x, int y, Color color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+        }
+
+    }
 
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Lapiz implements Herramienta {
 
-    private ArrayList<int[]> puntos = new ArrayList<>();
+    private ArrayList<DatosLapiz> puntos = new ArrayList<>();
     private Color color = Color.BLACK;
 
     @Override
@@ -16,23 +16,36 @@ public class Lapiz implements Herramienta {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        puntos.add(new int[]{
-            e.getX(),
-            e.getY()
-        });
+        puntos.add(new DatosLapiz(e.getX(), e.getY(), color));
     }
 
-    @Override 
+    @Override
     public void dibujar(Graphics g) {
-        g.setColor(color);
 
-        for (int[] p : puntos) {
-            g.fillOval(p[0], p[1], 5, 5);
+        for (DatosLapiz p : puntos) {
+
+            g.setColor(p.color);
+
+            g.fillOval(p.x, p.y, 5, 5);
         }
     }
 
     @Override
     public void setColor(Color color) {
         this.color = color;
+    }
+
+
+    private class DatosLapiz {
+
+        int x;
+        int y;
+        Color color;
+
+        public DatosLapiz(int x, int y, Color color) {
+            this.x = x;
+            this.y = y;
+            this.color = color;
+        }
     }
 }

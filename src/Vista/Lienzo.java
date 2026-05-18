@@ -12,18 +12,20 @@ public class Lienzo extends JPanel {
     private Punto punto;
     private Recta recta;
     private Circulo circulo;
+    private PoligonoRegular poligonoRegular;
+    private PoligonoIrregular poligonoIrregular;
 
     private Herramienta herramienta;
-    private PoligonoRegular poligonoRegular;
 
     public Lienzo() {
-        poligonoRegular = new PoligonoRegular();
         setBackground(Color.WHITE);
 
         lapiz = new Lapiz();
         punto = new Punto();
         recta = new Recta();
         circulo = new Circulo();
+        poligonoRegular = new PoligonoRegular();
+        poligonoIrregular = new PoligonoIrregular();
 
         herramienta = lapiz;
 
@@ -53,6 +55,7 @@ public class Lienzo extends JPanel {
         recta.dibujar(g);
         circulo.dibujar(g);
         poligonoRegular.dibujar(g);
+        poligonoIrregular.dibujar(g);
     }
 
     public void usarLapiz() {
@@ -71,30 +74,40 @@ public class Lienzo extends JPanel {
         herramienta = circulo;
     }
 
+    public void usarPoligonoRegular() {
+        herramienta = poligonoRegular;
+    }
+
+    public void usarPoligonoIrregular() {
+        herramienta = poligonoIrregular;
+    }
+
     public void setColorActual(Color color) {
         lapiz.setColor(color);
         punto.setColor(color);
         recta.setColor(color);
+
         circulo.setColor(color);
         circulo.setColorRelleno(color);
+
         poligonoRegular.setColor(color);
         poligonoRegular.setColorRelleno(color);
+
+        poligonoIrregular.setColor(color);
+        poligonoIrregular.setColorRelleno(color);
     }
 
     public void setRellenoCirculo(boolean relleno) {
         circulo.setRelleno(relleno);
     }
 
-    public void usarPoligonoRegular() {
-        herramienta = poligonoRegular;
+    public void setRellenoPoligono(boolean relleno) {
+        poligonoRegular.setRelleno(relleno);
+        poligonoIrregular.setRelleno(relleno);
     }
 
     public void setLadosPoligono(int lados) {
         poligonoRegular.setLados(lados);
+        poligonoIrregular.setLados(lados);
     }
-
-    public void setRellenoPoligono(boolean relleno) {
-        poligonoRegular.setRelleno(relleno);
-    }
-
 }
