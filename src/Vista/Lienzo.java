@@ -50,12 +50,31 @@ public class Lienzo extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        lapiz.dibujar(g);
-        punto.dibujar(g);
-        recta.dibujar(g);
-        circulo.dibujar(g);
-        poligonoRegular.dibujar(g);
-        poligonoIrregular.dibujar(g);
+        if (herramienta != lapiz) {
+            lapiz.dibujar(g);
+        }
+
+        if (herramienta != punto) {
+            punto.dibujar(g);
+        }
+
+        if (herramienta != recta) {
+            recta.dibujar(g);
+        }
+
+        if (herramienta != circulo) {
+            circulo.dibujar(g);
+        }
+
+        if (herramienta != poligonoRegular) {
+            poligonoRegular.dibujar(g);
+        }
+
+        if (herramienta != poligonoIrregular) {
+            poligonoIrregular.dibujar(g);
+        }
+
+        herramienta.dibujar(g);
     }
 
     public void usarLapiz() {
