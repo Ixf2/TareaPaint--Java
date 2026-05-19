@@ -64,9 +64,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mbMenu = new javax.swing.JMenu();
         jcbMenuNuevo = new javax.swing.JCheckBoxMenuItem();
+        jcbMenuGuardar = new javax.swing.JRadioButtonMenuItem();
         jcbMenuCargar = new javax.swing.JCheckBoxMenuItem();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        mbArchivo = new javax.swing.JMenu();
+        jcbMenuModificarNombre = new javax.swing.JRadioButtonMenuItem();
+        jcbMenuBorrar = new javax.swing.JRadioButtonMenuItem();
+        CheckBoxMenu = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,11 +150,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        mbMenu.setText("Menú");
+        mbMenu.setText("Archivo");
 
         jcbMenuNuevo.setSelected(true);
         jcbMenuNuevo.setText("Nuevo");
         mbMenu.add(jcbMenuNuevo);
+
+        jcbMenuGuardar.setSelected(true);
+        jcbMenuGuardar.setText("Guardar");
+        jcbMenuGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMenuGuardarActionPerformed(evt);
+            }
+        });
+        mbMenu.add(jcbMenuGuardar);
 
         jcbMenuCargar.setSelected(true);
         jcbMenuCargar.setText("Cargar");
@@ -163,19 +174,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         mbMenu.add(jcbMenuCargar);
 
-        jCheckBoxMenuItem1.setSelected(true);
-        jCheckBoxMenuItem1.setText("SVG");
-        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jcbMenuModificarNombre.setSelected(true);
+        jcbMenuModificarNombre.setText("Modificar nombre");
+        mbMenu.add(jcbMenuModificarNombre);
+
+        jcbMenuBorrar.setSelected(true);
+        jcbMenuBorrar.setText("Borrar");
+        mbMenu.add(jcbMenuBorrar);
+
+        CheckBoxMenu.setSelected(true);
+        CheckBoxMenu.setText("SVG");
+        CheckBoxMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxMenuItem1ActionPerformed(evt);
+                CheckBoxMenuActionPerformed(evt);
             }
         });
-        mbMenu.add(jCheckBoxMenuItem1);
+        mbMenu.add(CheckBoxMenu);
 
         jMenuBar1.add(mbMenu);
-
-        mbArchivo.setText("Archivo");
-        jMenuBar1.add(mbArchivo);
 
         setJMenuBar(jMenuBar1);
 
@@ -266,9 +282,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbMenuCargarActionPerformed
 
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+    private void CheckBoxMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+    }//GEN-LAST:event_CheckBoxMenuActionPerformed
 
     private void rbPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPuntoActionPerformed
         lienzo.usarPunto();
@@ -325,6 +341,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_rbPoligonoIrregularActionPerformed
 
+    private void jcbMenuGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbMenuGuardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -351,16 +371,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem CheckBoxMenu;
     private javax.swing.ButtonGroup Pinceles;
     private javax.swing.JComboBox<String> cbRelleno;
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelPincel;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JRadioButtonMenuItem jcbMenuBorrar;
     private javax.swing.JCheckBoxMenuItem jcbMenuCargar;
+    private javax.swing.JRadioButtonMenuItem jcbMenuGuardar;
+    private javax.swing.JRadioButtonMenuItem jcbMenuModificarNombre;
     private javax.swing.JCheckBoxMenuItem jcbMenuNuevo;
-    private javax.swing.JMenu mbArchivo;
     private javax.swing.JMenu mbMenu;
     private javax.swing.JRadioButton rbCirculo;
     private javax.swing.JRadioButton rbLapiz;

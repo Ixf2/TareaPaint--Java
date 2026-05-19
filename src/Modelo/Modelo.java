@@ -26,7 +26,7 @@ public final class Modelo {
         try{
             conexion = conectar("jdbc:mariadb://localhost:3306/");
             Statement st = conexion.createStatement();
-            st.executeUpdate("CREATE DATABASE IF NO EXISTS Paint");
+            st.executeUpdate("CREATE DATABASE IF NOT EXISTS Paint");
             System.out.println("Base de datos Paint creada o que ya existe");
         } catch (SQLException e){
             System.out.println("Error al crear la base de datos: " + e.getMessage());
@@ -66,7 +66,3 @@ public final class Modelo {
    
     
     
-    
-    
-    
-}
