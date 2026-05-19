@@ -69,7 +69,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jcbMenuCargar = new javax.swing.JCheckBoxMenuItem();
         jcbMenuModificarNombre = new javax.swing.JRadioButtonMenuItem();
         jcbMenuBorrar = new javax.swing.JRadioButtonMenuItem();
-        CheckBoxMenu = new javax.swing.JCheckBoxMenuItem();
+        jcbExtraer = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,14 +198,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         mbMenu.add(jcbMenuBorrar);
 
-        CheckBoxMenu.setSelected(true);
-        CheckBoxMenu.setText("SVG");
-        CheckBoxMenu.addActionListener(new java.awt.event.ActionListener() {
+        jcbExtraer.setSelected(true);
+        jcbExtraer.setText("SVG");
+        jcbExtraer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CheckBoxMenuActionPerformed(evt);
+                jcbExtraerActionPerformed(evt);
             }
         });
-        mbMenu.add(CheckBoxMenu);
+        mbMenu.add(jcbExtraer);
 
         jMenuBar1.add(mbMenu);
 
@@ -299,9 +299,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jcbMenuCargarActionPerformed
 
-    private void CheckBoxMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxMenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CheckBoxMenuActionPerformed
+    private void jcbExtraerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbExtraerActionPerformed
+        
+    }//GEN-LAST:event_jcbExtraerActionPerformed
 
     private void rbPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPuntoActionPerformed
         lienzo.usarPunto();
@@ -364,7 +364,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbMenuGuardarActionPerformed
 
     private void jcbMenuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuNuevoActionPerformed
-    lienzo.nuevoDibujo();
+        lienzo.nuevoDibujo();
     }//GEN-LAST:event_jcbMenuNuevoActionPerformed
 
     private void jcbMenuModificarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuModificarNombreActionPerformed
@@ -419,15 +419,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         return jcbMenuBorrar;
     }
 
+    public javax.swing.JMenuItem getExportar() {
+    return jcbExtraer;
+    } 
+    
+    public Lienzo getLienzo() {
+        return lienzo;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBoxMenuItem CheckBoxMenu;
     private javax.swing.ButtonGroup Pinceles;
     private javax.swing.JComboBox<String> cbRelleno;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelPincel;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JCheckBoxMenuItem jcbExtraer;
     private javax.swing.JRadioButtonMenuItem jcbMenuBorrar;
     private javax.swing.JCheckBoxMenuItem jcbMenuCargar;
     private javax.swing.JRadioButtonMenuItem jcbMenuGuardar;

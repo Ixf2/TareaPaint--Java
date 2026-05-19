@@ -395,31 +395,373 @@ public final class Modelo {
     }
 
     //UPDATE
+    // UPDATE nombre dibujo
     public void modificarDibujo(int id, String nuevoNombre) {
         try {
             String sql = "UPDATE dibujos SET nombre=? WHERE id=?";
+
             PreparedStatement ps = conexion.prepareStatement(sql);
+
             ps.setString(1, nuevoNombre);
             ps.setInt(2, id);
 
             ps.executeUpdate();
+
             System.out.println("Dibujo modificado correctamente");
 
         } catch (SQLException e) {
-            System.out.println("Error al modificar: " + e.getMessage());
+
+            System.out.println("Error al modificar dibujo: " + e.getMessage());
+
         }
     }
 
-    //DELETE
-    public void borrarDibujo(int id) {
+// UPDATE 
+    public void modificarFigura(
+            int figuraId,
+            String colorBorde,
+            String colorRelleno,
+            boolean relleno) {
+
+        try {
+
+            String sql
+                    = "UPDATE figuras "
+                    + "SET color_borde=?, "
+                    + "color_relleno=?, "
+                    + "relleno=? "
+                    + "WHERE id=?";
+
+            PreparedStatement ps
+                    = conexion.prepareStatement(sql);
+
+            ps.setString(1, colorBorde);
+            ps.setString(2, colorRelleno);
+            ps.setBoolean(3, relleno);
+            ps.setInt(4, figuraId);
+
+            ps.executeUpdate();
+
+            System.out.println("Figura modificada");
+
+        } catch (SQLException e) {
+
+            System.out.println(
+                    "Error modificar figura: "
+                    + e.getMessage()
+            );
+
+        }
+
+    }
+
+    public void modificarPunto(
+            int figuraId,
+            int x,
+            int y) {
+
+        try {
+
+            String sql
+                    = "UPDATE puntos "
+                    + "SET x=?, "
+                    + "y=? "
+                    + "WHERE figura_id=?";
+
+            PreparedStatement ps
+                    = conexion.prepareStatement(sql);
+
+            ps.setInt(1, x);
+            ps.setInt(2, y);
+            ps.setInt(3, figuraId);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(
+                    "Error modificar punto: "
+                    + e.getMessage()
+            );
+
+        }
+
+    }
+
+    public void modificarRecta(
+            int figuraId,
+            int x1,
+            int y1,
+            int x2,
+            int y2) {
+
+        try {
+
+            String sql
+                    = "UPDATE rectas "
+                    + "SET x1=?, "
+                    + "y1=?, "
+                    + "x2=?, "
+                    + "y2=? "
+                    + "WHERE figura_id=?";
+
+            PreparedStatement ps
+                    = conexion.prepareStatement(sql);
+
+            ps.setInt(1, x1);
+            ps.setInt(2, y1);
+            ps.setInt(3, x2);
+            ps.setInt(4, y2);
+            ps.setInt(5, figuraId);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(
+                    "Error modificar recta: "
+                    + e.getMessage()
+            );
+
+        }
+
+    }
+
+    public void modificarCirculo(
+            int figuraId,
+            int xCentro,
+            int yCentro,
+            int radio) {
+
+        try {
+
+            String sql
+                    = "UPDATE circulos "
+                    + "SET xCentro=?, "
+                    + "yCentro=?, "
+                    + "radio=? "
+                    + "WHERE figura_id=?";
+
+            PreparedStatement ps
+                    = conexion.prepareStatement(sql);
+
+            ps.setInt(1, xCentro);
+            ps.setInt(2, yCentro);
+            ps.setInt(3, radio);
+            ps.setInt(4, figuraId);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(
+                    "Error modificar círculo: "
+                    + e.getMessage()
+            );
+
+        }
+
+    }
+
+    public void modificarPoligonoRegular(
+            int figuraId,
+            int lados,
+            int radio,
+            double anguloInicial) {
+
+        try {
+
+            String sql
+                    = "UPDATE poligonos_regulares "
+                    + "SET lados=?, "
+                    + "radio=?, "
+                    + "anguloInicial=? "
+                    + "WHERE figura_id=?";
+
+            PreparedStatement ps
+                    = conexion.prepareStatement(sql);
+
+            ps.setInt(1, lados);
+            ps.setInt(2, radio);
+            ps.setDouble(3, anguloInicial);
+            ps.setInt(4, figuraId);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(
+                    "Error modificar polígono: "
+                    + e.getMessage()
+            );
+
+        }
+
+    }
+
+    public void modificarVertice(
+            int figuraId,
+            int ordenVertice,
+            int x,
+            int y) {
+
+        try {
+
+            String sql
+                    = "UPDATE vertices_poligonos "
+                    + "SET x=?, "
+                    + "y=? "
+                    + "WHERE figura_id=? "
+                    + "AND orden_vertice=?";
+
+            PreparedStatement ps
+                    = conexion.prepareStatement(sql);
+
+            ps.setInt(1, x);
+            ps.setInt(2, y);
+            ps.setInt(3, figuraId);
+            ps.setInt(4, ordenVertice);
+
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println(
+                    "Error modificar vértice: "
+                    + e.getMessage()
+            );
+
+        }
+
+    }
+
+    // DELETE dibujo completo
+    public void borrarDibujo(int dibujoId) {
         try {
             String sql = "DELETE FROM dibujos WHERE id=?";
             PreparedStatement ps = conexion.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, dibujoId);
             ps.executeUpdate();
+
             System.out.println("Dibujo eliminado correctamente");
+
         } catch (SQLException e) {
-            System.out.println("Error al borrar: " + e.getMessage());
+            System.out.println("Error al borrar dibujo: " + e.getMessage());
+        }
+    }
+
+// DELETE 
+    public void borrarFigura(int figuraId) {
+        try {
+            String sql = "DELETE FROM figuras WHERE id=?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, figuraId);
+            ps.executeUpdate();
+
+            System.out.println("Figura eliminada correctamente");
+
+        } catch (SQLException e) {
+            System.out.println("Error al borrar figura: " + e.getMessage());
+        }
+    }
+
+    public void borrarPunto(int figuraId) {
+        try {
+            String sql = "DELETE FROM puntos WHERE figura_id=?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, figuraId);
+            ps.executeUpdate();
+
+            System.out.println("Punto eliminado correctamente");
+
+        } catch (SQLException e) {
+            System.out.println("Error al borrar punto: " + e.getMessage());
+        }
+    }
+
+    public void borrarRecta(int figuraId) {
+        try {
+            String sql = "DELETE FROM rectas WHERE figura_id=?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, figuraId);
+            ps.executeUpdate();
+
+            System.out.println("Recta eliminada correctamente");
+
+        } catch (SQLException e) {
+            System.out.println("Error al borrar recta: " + e.getMessage());
+        }
+    }
+
+    public void borrarCirculo(int figuraId) {
+        try {
+            String sql = "DELETE FROM circulos WHERE figura_id=?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, figuraId);
+            ps.executeUpdate();
+
+            System.out.println("Círculo eliminado correctamente");
+
+        } catch (SQLException e) {
+            System.out.println("Error al borrar círculo: " + e.getMessage());
+        }
+    }
+
+    public void borrarPoligonoRegular(int figuraId) {
+        try {
+            String sql = "DELETE FROM poligonos_regulares WHERE figura_id=?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, figuraId);
+            ps.executeUpdate();
+
+            System.out.println("Polígono regular eliminado correctamente");
+
+        } catch (SQLException e) {
+            System.out.println("Error al borrar polígono regular: " + e.getMessage());
+        }
+    }
+
+    public void borrarVerticesPoligono(int figuraId) {
+        try {
+            String sql = "DELETE FROM vertices_poligonos WHERE figura_id=?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, figuraId);
+            ps.executeUpdate();
+
+            System.out.println("Vértices eliminados correctamente");
+
+        } catch (SQLException e) {
+            System.out.println("Error al borrar vértices: " + e.getMessage());
+        }
+    }
+
+//EXPORTAR DATOS
+    public void exportarBaseDatos() {
+        try {
+            String rutaSalida = "Paint_backup.sql";
+            System.out.println(new java.io.File("Paint_backup.sql").getAbsolutePath());
+            
+            ProcessBuilder pb = new ProcessBuilder(
+                    "C:\\xampp\\mysql\\bin\\mysqldump.exe",
+                    "-u", usuario,
+                    "--password=" + password,
+                    "Paint"
+            );
+
+            pb.redirectOutput(new java.io.File(rutaSalida));
+            pb.redirectErrorStream(true);
+
+            Process proceso = pb.start();
+            int resultado = proceso.waitFor();
+
+            if (resultado == 0) {
+                System.out.println("Base de datos exportada correctamente: " + rutaSalida);
+            } else {
+                System.out.println("Error al exportar la base de datos");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error exportando BD: " + e.getMessage());
         }
     }
 

@@ -23,6 +23,8 @@ public class Controlador {
 
         vista.getEliminar().addActionListener(e -> {modelo.borrarDibujo(1);});
 
+        vista.getExportar().addActionListener(e -> {modelo.exportarBaseDatos();});
+        
     }
     
     

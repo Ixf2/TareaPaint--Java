@@ -143,4 +143,29 @@ public class Lienzo extends JPanel {
         repaint();
     }
 
+    public Lapiz getLapiz() {
+        return lapiz;
+    }
+
+    public Punto getPunto() {
+        return punto;
+    }
+
+    public Recta getRecta() {
+        return recta;
+    }
+
+    public Circulo getCirculo() {
+        return circulo;
+    }
+
+    public PoligonoRegular getPoligonoRegular() {
+        return poligonoRegular;
+    }
+
+    public PoligonoIrregular getPoligonoIrregular() {
+        return poligonoIrregular;
+    }
+
+    
 }
