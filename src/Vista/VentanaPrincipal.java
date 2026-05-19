@@ -106,6 +106,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         Pinceles.add(rbPoligonoIrregular);
         rbPoligonoIrregular.setText("Polígono Irregular");
+        rbPoligonoIrregular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPoligonoIrregularActionPerformed(evt);
+            }
+        });
 
         sLadoPoligono.setMajorTickSpacing(1);
         sLadoPoligono.setMaximum(12);
@@ -312,6 +317,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             lienzo.setLadosPoligono(sLadoPoligono.getValue());
         }
     }//GEN-LAST:event_sLadoPoligonoStateChanged
+
+    private void rbPoligonoIrregularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPoligonoIrregularActionPerformed
+        lienzo.usarPoligonoIrregular();
+        lienzo.setLadosPoligono(sLadoPoligono.getValue());
+
+
+    }//GEN-LAST:event_rbPoligonoIrregularActionPerformed
 
     /**
      * @param args the command line arguments
