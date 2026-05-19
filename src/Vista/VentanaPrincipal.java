@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Modelo.Modelo;
 import java.awt.Color;
 import javax.swing.JColorChooser;
 
@@ -154,6 +155,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jcbMenuNuevo.setSelected(true);
         jcbMenuNuevo.setText("Nuevo");
+        jcbMenuNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMenuNuevoActionPerformed(evt);
+            }
+        });
         mbMenu.add(jcbMenuNuevo);
 
         jcbMenuGuardar.setSelected(true);
@@ -176,10 +182,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jcbMenuModificarNombre.setSelected(true);
         jcbMenuModificarNombre.setText("Modificar nombre");
+        jcbMenuModificarNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMenuModificarNombreActionPerformed(evt);
+            }
+        });
         mbMenu.add(jcbMenuModificarNombre);
 
         jcbMenuBorrar.setSelected(true);
         jcbMenuBorrar.setText("Borrar");
+        jcbMenuBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbMenuBorrarActionPerformed(evt);
+            }
+        });
         mbMenu.add(jcbMenuBorrar);
 
         CheckBoxMenu.setSelected(true);
@@ -342,8 +358,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_rbPoligonoIrregularActionPerformed
 
     private void jcbMenuGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuGuardarActionPerformed
-        // TODO add your handling code here:
+        Modelo modelo = new Modelo();
+        modelo.guardarDibujo("Prueba");
+        
     }//GEN-LAST:event_jcbMenuGuardarActionPerformed
+
+    private void jcbMenuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuNuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbMenuNuevoActionPerformed
+
+    private void jcbMenuModificarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuModificarNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbMenuModificarNombreActionPerformed
+
+    private void jcbMenuBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuBorrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbMenuBorrarActionPerformed
 
     /**
      * @param args the command line arguments

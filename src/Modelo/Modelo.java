@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
 public final class Modelo {
@@ -59,6 +61,65 @@ public final class Modelo {
             }  
             
         }
+    
+    //CRUD
+    //CREATE 
+    public void guardarDibujo(String nombre){
+        try{
+            String sql = "INSERT INTO dibujos(nombre) VALUES (?)";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ps.executeUpdate();
+            System.out.println("Dibujo guardado correctamente");
+        }catch (SQLException e){
+            System.out.println("Error al guardar el dibujo: " + e.getMessage());
+        }
+    }
+    
+    //READ
+    public void cargarDibujos(){
+        try{
+            String sql = "SELECT * FROM dibujos";
+            PreparedStatement ps = conexion.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()){
+                System.out.println("ID: " + rs.getInt("id")+ "| Nombre: " + rs.getString("nombre"));
+            }
+            
+        }
+    
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+    //UPDATE
+        
+        
+        
+        
+        
+        
+        
+    //DELETE
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
         
         
