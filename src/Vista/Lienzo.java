@@ -129,4 +129,18 @@ public class Lienzo extends JPanel {
         poligonoRegular.setLados(lados);
         poligonoIrregular.setLados(lados);
     }
+
+    public void nuevoDibujo() {
+        lapiz = new Lapiz();
+        punto = new Punto();
+        recta = new Recta();
+        circulo = new Circulo();
+        poligonoRegular = new PoligonoRegular();
+        poligonoIrregular = new PoligonoIrregular();
+
+        herramienta = lapiz;
+
+        repaint();
+    }
+
 }

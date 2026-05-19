@@ -364,7 +364,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jcbMenuGuardarActionPerformed
 
     private void jcbMenuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuNuevoActionPerformed
-
+    lienzo.nuevoDibujo();
     }//GEN-LAST:event_jcbMenuNuevoActionPerformed
 
     private void jcbMenuModificarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuModificarNombreActionPerformed
