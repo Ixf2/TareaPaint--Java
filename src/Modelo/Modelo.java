@@ -80,7 +80,7 @@ public final class Modelo {
     public void cargarDibujos(){
         try{
             String sql = "SELECT * FROM dibujos";
-            PreparedStatement ps = conexion.prepareCall(sql);
+            PreparedStatement ps = conexion.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()){
@@ -98,7 +98,7 @@ public final class Modelo {
         public void modificarDibujo(int id, String nuevoNombre){
             try{
                 String sql = "UPDATE dibujos SET nombre=? WHERE id=?";
-                PreparedStatement ps = conexion.prepareCall(sql);
+                PreparedStatement ps = conexion.prepareStatement(sql);
                 ps.setString(1, nuevoNombre);
                 ps.setInt(2, id);
                 
@@ -114,7 +114,7 @@ public final class Modelo {
     public void borrarDibujo(int id){
         try{
             String sql = "DELETE FROM dibujos WHERE id=?";
-            PreparedStatement ps = conexion.prepareCall(sql);
+            PreparedStatement ps = conexion.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
             System.out.println("Dibujo eliminado correctamente");
