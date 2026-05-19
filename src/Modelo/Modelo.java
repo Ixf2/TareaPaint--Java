@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 public final class Modelo {
     private Connection conexion;
     
-    private final String usuario = "admin";
+    private final String usuario = "root";
     private final String password = "";
     
     public Modelo(){
@@ -87,27 +87,41 @@ public final class Modelo {
                 System.out.println("ID: " + rs.getInt("id")+ "| Nombre: " + rs.getString("nombre"));
             }
             
+        }catch (SQLException e){
+            System.out.println("Error al cargar dibujos: " + e.getMessage());
         }
     
     }
-        
-        
-        
-        
-        
-        
-        
+ 
         
     //UPDATE
-        
-        
-        
-        
-        
-        
-        
+        public void modificarDibujo(int id, String nuevoNombre){
+            try{
+                String sql = "UPDATE dibujos SET nombre=? WHERE id=?";
+                PreparedStatement ps = conexion.prepareCall(sql);
+                ps.setString(1, nuevoNombre);
+                ps.setInt(2, id);
+                
+                ps.executeUpdate();
+                System.out.println("Dibujo modificado correctamente");
+                
+            }catch (SQLException e){
+                System.out.println("Error al modificar: " + e.getMessage());
+            }
+        }
+                
     //DELETE
-    
+    public void borrarDibujo(int id){
+        try{
+            String sql = "DELETE FROM dibujos WHERE id=?";
+            PreparedStatement ps = conexion.prepareCall(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println("Dibujo eliminado correctamente");
+        }catch (SQLException e){
+            System.out.println("Error al borrar: " + e.getMessage());
+        }
+    }
     
     
     

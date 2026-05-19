@@ -15,6 +15,7 @@ import javax.swing.JColorChooser;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     private Lienzo lienzo;
+    private Modelo modelo;
     private Color colorActual = Color.BLACK;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
 
@@ -27,6 +28,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lienzo = new Lienzo();
         lienzo.setBounds(0, 100, 800, 495);
         add(lienzo);
+        
+        modelo = new Modelo();
 
         lienzo.setLadosPoligono(sLadoPoligono.getValue());
 
@@ -295,7 +298,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_rbCirculoActionPerformed
 
     private void jcbMenuCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuCargarActionPerformed
-        // TODO add your handling code here:
+       modelo.cargarDibujos();
     }//GEN-LAST:event_jcbMenuCargarActionPerformed
 
     private void CheckBoxMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxMenuActionPerformed
@@ -358,21 +361,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_rbPoligonoIrregularActionPerformed
 
     private void jcbMenuGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuGuardarActionPerformed
-        Modelo modelo = new Modelo();
         modelo.guardarDibujo("Prueba");
-        
     }//GEN-LAST:event_jcbMenuGuardarActionPerformed
 
     private void jcbMenuNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuNuevoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jcbMenuNuevoActionPerformed
 
     private void jcbMenuModificarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuModificarNombreActionPerformed
-        // TODO add your handling code here:
+        modelo.modificarDibujo(1, "Nombre nuevo");
     }//GEN-LAST:event_jcbMenuModificarNombreActionPerformed
 
     private void jcbMenuBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbMenuBorrarActionPerformed
-        // TODO add your handling code here:
+        modelo.borrarDibujo(1);
     }//GEN-LAST:event_jcbMenuBorrarActionPerformed
 
     /**
